@@ -7,17 +7,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
-
     @GetMapping("/test")
-    public String test(){
+    public String test() {
         return "Hello world, this is my first Project!....";
     }
 
     @GetMapping("/hello")
     public String hello(@RequestParam String name,
-                        @RequestParam String lastname){
-        return "This is my first SpringBootProject!, and my name is: "
-                + name + " " + lastname;
+                        @RequestParam String lastname,
+                        @RequestParam(required = false) Integer age) {
+        String message = "This is my first SpringBootProject!" +
+                ", and my name is: " + name + " " + lastname;
+        if (age != null) {
+            message = message + "and my age is " + age;
+        }
+        return message;
     }
 
     @GetMapping("/concat/{name}/{lastname}")
