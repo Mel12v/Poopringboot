@@ -14,10 +14,13 @@ public class TestController {
 
     @GetMapping("/hello")
     public String hello(@RequestParam String name,
-                        @RequestParam String lastname,
+                        @RequestParam(required = false) String lastname,
                         @RequestParam(required = false) Integer age) {
         String message = "This is my first SpringBootProject!" +
-                ", and my name is: " + name + " " + lastname;
+                ", and my name is: " + name;
+        if (lastname != null) {
+            message = message + lastname;
+        }
         if (age != null) {
             message = message + "and my age is " + age;
         }
