@@ -20,19 +20,20 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-
     public List<BookDTO> findAll() {
+        Iterable<Book> books = bookRepository.findAll();
         List<BookDTO> bookList = new ArrayList<>();
-        Iterable<Book> books= bookRepository.findAll();
-        for (Book bookI : books) {
+        for(Book bookI : books) {
             BookDTO book = new BookDTO();
             book.setTitle(bookI.getTitle());
             book.setEditorial(bookI.getEditorial());
+            book.setPublisher(bookI.getPublisher());
             AuthorDTO authorDTO = new AuthorDTO();
             authorDTO.setName(bookI.getAuthor().getName());
             authorDTO.setLastname(bookI.getAuthor().getLastname());
             book.setAuthorDTO(authorDTO);
             bookList.add(book);
+
         }
         return bookList;
     }

@@ -11,14 +11,20 @@ public class Book {
     private Long Id;
     private String title;
     private String editorial;
+    private String publisher;
+
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = true)
 
     private Author author;
 
-    public Book(String title, String editorial) {
+    public Book() {
+    }
+
+    public Book(String title, String editorial, String publisher) {
         this.title = title;
         this.editorial = editorial;
+        this.publisher = publisher;
     }
     public String getTitle() {
         return title;
@@ -58,6 +64,14 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     @Override

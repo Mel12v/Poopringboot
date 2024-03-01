@@ -12,7 +12,8 @@
         border-collapse: collapse;
         }
         tr:first-child {
-        background-color: lightskyblue;
+        background-color:blue;
+        background-color:pink;
         }
         tr{
         text-align: center;
@@ -30,6 +31,7 @@
         <tr th:each="author: ${authors}">
         <th th:text="${author.name}"></th>
         <th th:text="${author.lastname}"></th>
+
     </tr>
 
 </table>
